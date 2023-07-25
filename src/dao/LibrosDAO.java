@@ -169,8 +169,10 @@ public class LibrosDAO {
 		} catch (SQLException e1) {
 			System.out.println("Error al insertar "+e1.getMessage()+e1.getErrorCode());
 			// controlamos si se ha el duplicado la calve primaria
-			if (e1.getErrorCode()==23000) {
+			if (e1.getErrorCode()==1062) {
 				throw new BBDDException("Error insertando. Clave duplicado");
+			} else if (e1.getErrorCode()==1216) {
+				throw new BBDDException("Código Editorial no existe");
 			}
 			throw new BBDDException("Error al insertar");
 		} finally {

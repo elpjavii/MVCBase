@@ -9,7 +9,7 @@ import excepciones.BBDDException;
 public class ConexionBD {
 
 	// datos de la conexión
-	private static String database="bilioteca";
+	private static String database="biblioteca";
 	private static String user="bibliotecario";
 	private static String pass="1234";
 	private static String url="jdbc:mysql://localhost:3306/"+database;
