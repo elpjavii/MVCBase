@@ -18,7 +18,7 @@ public class Controlador {
 	private NuevoLibroDialog dNuevoLibro;
 	
 	// Definimos los objetos de acceso a datos (DAO)
-	LibrosDAO daoLibro;
+	private LibrosDAO daoLibro;
 	
 	public Controlador() {
 		
@@ -46,7 +46,6 @@ public class Controlador {
 	public void insertaLibro(Libro l) throws BBDDException {
 		this.daoLibro.insertarLibro(l);
 		this.dNuevoLibro.setVisible(false);
-		
 	}
 
 	

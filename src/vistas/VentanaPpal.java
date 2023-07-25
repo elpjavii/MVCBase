@@ -57,10 +57,15 @@ public class VentanaPpal extends JFrame {
 		contentPane.add(btnNuevoLibro, "cell 1 1");
 		
 		JButton btnMostrarLibros = new JButton("Mostrar Libros");
+		btnMostrarLibros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnMostrarLibros.setFont(new Font("Verdana", Font.PLAIN, 18));
 		contentPane.add(btnMostrarLibros, "cell 3 1");
 	}
 
+	
 	public void setControlador(Controlador controlador) {
 		this.controlador=controlador;
 	}

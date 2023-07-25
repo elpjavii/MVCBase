@@ -13,27 +13,28 @@ import modelo.Libro;
 import utilidades.ConexionBD;
 
 public class LibrosDAO {
-
+	/**
+	 * Javi: ESTABLECE LA CONECION Y CON ESTO LA IMPLEMENTAMOS SIN INSTANCIARLA
+	 */
 	private ConexionBD conexion;
 	
 	private Statement sentencia;
 	private PreparedStatement sentenciaPrep;
 	private ResultSet resultado;
 	private Connection con;
-	
+	// INSTANCIAMOS LA CONEXION CREANDO LIBROSDAO VACIO PARA LLAMARLA POSTERIORMENTE
 	public LibrosDAO() {
 		this.conexion = new ConexionBD();
 	}
 	
 	/**
-	 * Método de la clase q ue devuelve todos los libros de la tabla Libros
+	 * Método de la clase que devuelve todos los libros de la tabla Libros
 	 * @return Arraylist<Libro> con los libros o un ArrayList vacío en caso de que 
 	 * no devuelva resultados. 
 	 * @throws CantidadDebeSerPositivaException cuando se recogen valores negativos en cantidad
 	 * @throws BBDDException se produce error en la base de datos
 	 */
-	public ArrayList<Libro> getAllLibros() 
-			throws CantidadDebeSerPositivaException, BBDDException {
+	public ArrayList<Libro> getAllLibros() throws CantidadDebeSerPositivaException, BBDDException {
 		// instanciamos la lista
 		ArrayList<Libro> lista = new ArrayList<Libro>();
 		
@@ -43,14 +44,17 @@ public class LibrosDAO {
 		try {
 			// Conectamos con la base de datos
 			con = this.conexion.getConexion();
+			
 			// Crea el objeto Statement con el que se pueden lanzar consultas
 			sentencia = con.createStatement();
+			
 			// Se ejecuta la consulta y se recoge el ResultSet (resultado)
 			resultado = sentencia.executeQuery(consulta);
 			
+			
 			// Hacemos un bucle para recorrer el cursor con los resultados
 			// next devuelve true mientras haya datos, false en caso contrario
-			while(resultado.next()) {
+			while (resultado.next()) {
 				
 				// recogemos todos los datos invocando a los método  getters correspondientes
 				String isbn = resultado.getString("isbn");
@@ -70,6 +74,9 @@ public class LibrosDAO {
 			}
 		} catch (SQLException e) {
 			System.out.println("Error en la consulta "+e.getMessage());
+			
+			// EL ERROR SE PROPAGA CON THROW HACIA ARRIBA, ESTE ERROR ES EL QUE SE MUESTRA AL USUSARIO Y SE EXTIENDE 
+			// HACIA LA INTERFAZ GRAFICA
 			throw new BBDDException("Error al realizar la consulta. Consulte con el administrador");
 		} finally {
 			try {

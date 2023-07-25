@@ -208,10 +208,10 @@ public class NuevoLibroDialog extends JDialog {
 		
 		return l;
 	}
+	
 
 	public void setControlador(Controlador controlador) {
 		this.controlador=controlador;
-		
 	}
 
 }
