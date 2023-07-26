@@ -6,12 +6,22 @@ public class Editorial {
 	private int codEditorial;
 	private String Nombre;
 	private int anio;
+	
+	
+	
+	public Editorial(String nombre, int anio) {
+		super();
+		Nombre = nombre;
+		this.anio = anio;
+	}
+
 	public Editorial(int codEditorial, String nombre, int anio) {
 		super();
 		this.codEditorial = codEditorial;
 		Nombre = nombre;
 		this.anio = anio;
 	}
+	
 	public String getNombre() {
 		return Nombre;
 	}
@@ -27,6 +37,8 @@ public class Editorial {
 	public int getCodEditorial() {
 		return codEditorial;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(codEditorial);

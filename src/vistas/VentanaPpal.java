@@ -45,7 +45,7 @@ public class VentanaPpal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][][][]", "[][]"));
+		contentPane.setLayout(new MigLayout("", "[][][][]", "[][][][]"));
 		
 		JButton btnNuevoLibro = new JButton("Nuevo Libro");
 		btnNuevoLibro.addActionListener(new ActionListener() {
@@ -63,6 +63,15 @@ public class VentanaPpal extends JFrame {
 		});
 		btnMostrarLibros.setFont(new Font("Verdana", Font.PLAIN, 18));
 		contentPane.add(btnMostrarLibros, "cell 3 1");
+		
+		JButton btnInsertar = new JButton("Nueva Editorial");
+		btnInsertar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.mostrarInsertarEditorial();
+			}
+		});
+		btnInsertar.setFont(new Font("Verdana", Font.PLAIN, 18));
+		contentPane.add(btnInsertar, "cell 1 3,growx");
 	}
 
 	
